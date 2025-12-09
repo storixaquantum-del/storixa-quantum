@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SSD Product Verification</title>
+<style>
+body { font-family: Arial; padding: 20px; }
+.card { max-width: 400px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:10px; }
+.success { color: green; }
+.error { color: red; }
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Storixa Quantum Product Verification</h2>
+<div id="result">Checking...</div>
+</div>
+
+<script>
+async function verify() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const serial = urlParams.get('serial');
+
+    if (!serial) {
+        document.getElementById("result").innerHTML =
+            "<p class='error'>No serial number provided.</p>";
+        return;
+    }
+
+    const response = await fetch("products.json");
+    const data = await response.json();
+
+    if (data[serial]) {
+        const p = data[serial];
+        document.getElementById("result").innerHTML = `
+            <p class="success"><b>VALID PRODUCT</b></p>
+            <p><b>Product Name:</b> ${p.product_name}</p>
+            <p><b>Product ID:</b> ${p.product_id}</p>
+            <p><b>Serial Number:</b> ${serial}</p>
+            <p><b>Warranty:</b> ${p.warranty}</p>
+        `;
+    } else {
+        document.getElementById("result").innerHTML =
+            "<p class='error'><b>INVALID OR FAKE PRODUCT</b></p>";
+    }
+}
+verify();
+</script>
+
+</body>
+</html>

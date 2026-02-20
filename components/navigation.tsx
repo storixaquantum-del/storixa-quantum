@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import Logo from '@/components/logo';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,9 +15,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center font-bold text-accent-foreground">
-              SQ
-            </div>
+            <Logo size={36} className="transition-transform duration-300 group-hover:scale-110" />
             <span className="font-bold text-lg hidden sm:inline text-foreground">Storixa Quantum</span>
           </Link>
 

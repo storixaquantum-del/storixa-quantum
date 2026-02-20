@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { MessageCircle } from 'lucide-react';
+import Logo from '@/components/logo';
 
 export default function Footer() {
   const whatsappUrl = 'https://wa.me/1234567890?text=Hi! I am interested in Storixa Quantum SSDs. Can you help?';
@@ -13,9 +14,7 @@ export default function Footer() {
           {/* Left - Brand and Copyright */}
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <div className="w-6 h-6 bg-gradient-to-br from-accent to-primary rounded flex items-center justify-center font-bold text-accent-foreground text-xs">
-                SQ
-              </div>
+              <Logo size={28} />
               <span className="font-semibold text-foreground text-sm">Storixa Quantum</span>
             </Link>
             <span className="text-muted-foreground text-sm">© 2024</span>
